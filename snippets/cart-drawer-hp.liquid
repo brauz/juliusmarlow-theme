@@ -16,20 +16,9 @@
   .drawer {
     visibility: hidden;
   }
-  .brauz-mini-cart-item-message div {
-    color: #ed1717;
-    margin-top: -20px;
-  }
 
   .cart-items tr.cart-item {
     position: relative;
-  }
-
-  .brauz-cart-item-message div {
-    color: #ed1717;
-    position: absolute;
-    bottom: 0;
-    left: 0;
   }
 </style>
 
@@ -432,16 +421,6 @@
                           </div>
                         </td>
                       </tr>
-
-                      {% if settings['brauz-enabled'] %}
-                        {% comment %} Start: Brauz Snippet for Cart Error{% endcomment %}
-                        <tr
-                          class="brauz-mini-cart-item-message"
-                          brauz-id="cart-item-message"
-                          brauz-data-cart-item-id="{{ item.id }}"
-                        ></tr>
-                        {% comment %} End: Brauz Snippet for Cart Error{% endcomment %}
-                      {% endif %}
                     {%- endfor -%}
                   </tbody>
                 </table>
@@ -562,28 +541,6 @@
             </small>
           {% endif %}
         </div>
-        {% if settings['brauz-enabled'] %}
-          {% comment %} Start: Brauz Snippet for mini cart {% endcomment %}
-          <img
-            id="brauz-shopify-cart-change-listener"
-            src=""
-            style="display: none;"
-            onload="window.Brauz_shopify_helper_setupFindInStoreComponentInCart()"
-            onerror="window.Brauz_shopify_helper_setupFindInStoreComponentInCart()"
-
-          ></img>
-          <div
-            id="brauz-click-and-collect-config-cart-drawer"
-            data-sd="{{ shop.permanent_domain }}"
-            style="display: none; width: 0;"
-          ></div>
-          <div id="brauz-click-and-collect-cart-drawer"></div>
-          <script
-            src="https://d3aq2u4yw77ivo.cloudfront.net/find-in-store/shopify/hushpuppies/find-in-store.shopify.hushpuppies.prod.js"
-            async
-          ></script>
-          {% comment %} End: Brauz Snippet for mini cart {% endcomment %}
-        {% endif %}
         <!-- CTAs -->
 
         <div class="cart__ctas" {{ block.shopify_attributes }}>
